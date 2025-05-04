@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pirate Pool Services: Swashbuckling pool cleaning with a treasure trove of puns!">
+  <title>Pirate Pool Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Pirata One', cursive;
+      background: url('https://www.transparenttextures.com/patterns/paper-fibers.png'), linear-gradient(to bottom, #fdf7e4, #f6f0dc);
+      color: #2e1c0f;
+      margin: 0;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      position: relative;
+      color: #f7e0a3;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(30, 18, 7, 0.5);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .service-card, .crew-card, .pricing-card, .gallery-card, .testimonial {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover, .crew-card:hover, .pricing-card:hover, .gallery-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    .testimonial-slider {
+      position: relative;
+      height: 200px;
+    }
+    .testimonial {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+    .testimonial.active {
+      opacity: 1;
+      position: relative;
+    }
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: #8b5a2b;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .dot.active {
+      background: #f7e0a3;
+    }
+    #treasure {
+      display: none;
+      color: #8b5a2b;
+      font-weight: bold;
+      text-align: center;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="text-center bg-gradient-to-b from-[#3e2f21] to-[#1e1207] text-[#f7e0a3] py-8 border-b-4 border-[#8b5a2b]">
+    <h1 class="text-5xl drop-shadow-lg">Pirate Pool Services</h1>
+    <p class="mt-2 text-lg italic">“We Keep Yer Waters Shipshape!”</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="bg-[#8b5a2b] sticky top-0 z-50 py-3 flex justify-center flex-wrap gap-4">
+    <a href="#home" class="text-[#f7e0a3] text-xl hover:underline">Home</a>
+    <a href="#services" class="text-[#f7e0a3] text-xl hover:underline">Services</a>
+    <a href="#crew" class="text-[#f7e0a3] text-xl hover:underline">Crew</a>
+    <a href="#pricing" class="text-[#f7e0a3] text-xl hover:underline">Pricing</a>
+    <a href="#gallery" class="text-[#f7e0a3] text-xl hover:underline">Gallery</a>
+    <a href="#testimonials" class="text-[#f7e0a3] text-xl hover:underline">Reviews</a>
+    <a href="#contact" class="text-[#f7e0a3] text-xl hover:underline">Contact</a>
+    <a href="#login" class="text-[#f7e0a3] text-xl hover:underline">Login</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero py-24 text-center">
+    <div class="hero-content max-w-4xl mx-auto px-4">
+      <h2 class="text-4xl mb-4">Dive into Doubloon-Worthy Pools!</h2>
+      <p class="text-lg mb-6">Our crew swabs your pool cleaner than a pirate’s treasure. Join the Pirate Crew today!</p>
+      <button onclick="revealTreasure()" class="bg-[#8b5a2b] text-[#f7e0a3] py-3 px-6 rounded text-xl hover:bg-[#2e1c0f]">Hunt for Treasure!</button>
+      <p id="treasure">Use code KRAKEN20 for 20% off your first service!</p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-16 px-4 max-w-5xl mx-auto opacity-0 translate-y-10 transition-all duration-700 ease-out">
+    <h2 class="text-4xl text-center border-b-2 border-dashed border-[#8b5a2b] pb-4 mb-12">Our Treasure Chest of Services</h2>
+    <div class="flex flex-wrap gap-8 justify-center">
+      <div class="service-card w-72 bg-[#fff8dc] border-4 border-dashed border-[#8b5a2b] rounded-xl p-6 shadow-lg text-center">
+        <h3 class="text-2xl mb-2">Swab the Deck</h3>
+        <p>Weekly cleaning & chemical balance. $50/month.</p>
+        <button class="mt-4 bg-[#8b5a2b] text-[#f7e0a3] py-2 px-4 rounded">Book Now</button>
+      </div>
+      <div class="service-card w-72 bg-[#fff8dc] border-4 border-dashed border-[#8b5a2b] rounded-xl p-6 shadow-lg text-center">
+        <h3 class="text-2xl mb-2">Slay the Kraken</h3>
+        <p>Green pool rescue from algae monsters. $100.</p>
+        <button class="mt-4 bg-[#8b5a2b] text-[#f7e0a3] py-2 px-4 rounded">Book Now</button>
+      </div>
+      <div class="service-card w-72 bg-[#fff8dc] border-4 border-dashed border-[#8b5a2b] rounded-xl p-6 shadow-lg text-center">
+        <h3 class="text-2xl mb-2">Pirate’s Subscription</h3>
+        <p>Join the crew for monthly booty & discounts. $20/month.</p>
+        <button class="mt-4 bg-[#8b5a2b] text-[#f7e0a3] py-2 px-4 rounded">Join Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Crew Section -->
+  <section id="crew" class="py-16 px-4 max-w-4xl mx-auto opacity-0 translate-y-10 transition-all duration-700 ease-out">
+    <h2 class="text-4xl text-center border-b-2 border-dashed border-[#8b5a2b] pb-4 mb-12">Meet the Crew</h2>
+    <div class="flex flex-wrap gap-8 justify-center">
+      <div class="crew-card w-72 bg-[#fff8dc] border-4 border-dashed border-[#8b5a2b] rounded-xl p-6 shadow-lg text-center">
+        <img src="https://i.imgur.com/H7Y3ZOb.png" alt="Captain John cleaning a pool" class="w-full rounded-lg mb-4">
+        <h3 class="text-2xl mb-1">Captain John</h3>
+        <p>Slays algae krakens & charts crystal seas.</p>
+      </div>
+      <div class="crew-card w-72 bg-[#fff8dc] border-4 border-dashed border-[#8b5a2b] rounded-xl p-6 shadow-lg text-center">
+        <img src="https://i.imgur.com/1yFqdeY.png" alt="First Matetriss Rohnda testing pool water" class="w-full rounded-lg mb-4">
+        <h3 class="text-2xl mb-1">First Matetriss Rohnda</h3>
+        <p>Keeps waters calm & nets mermaid-fine.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-16 px-4 max-w-4xl mx-auto opacity-0 translate-y-10 transition-all duration-700 ease-out">
+    <h2 class="text-4xl text-center border-b-2 border-dashed border-[#8b5a2b] pb-4 mb-12">Treasure Map Pricing</h2>
+    <div class="flex flex-wrap gap-8 justify-center">
+      <div class="pricing-card w-72 bg-[#fff8dc] border-4 border-dashed border-[#8b5a2b] rounded-xl p-6 shadow-lg text-center">
+        <h3 class="text-2xl mb-2">Bronze Doubloon</h3>
+        <p>Basic Cleaning & Test – $79/month</p>
+        <button class="mt-4 bg-[#8b5a2b] text-[#f7e0a3] py-2 px-4 rounded">Sign Up</button>
+      </div>
+      <div class="pricing-card w-72 bg-[#fff8dc] border-4 border-dashed border-[#8b5a2b] rounded-xl p-6 shadow-lg text-center">
+        <h3 class="text-2xl mb-2">Silver Saber</h3>
+        <p>Cleaning + Equipment Check – $129/month</p>
+        <button class="mt-4 bg-[#8b5a2b] text-[#f7e0a3] py-2 px-4 rounded">Sign Up</button>
+      </div>
+      <div class="pricing-card w-72 bg-[#fff8dc] border-4 border-dashed border-[#8b5a2b] rounded-xl p-6 shadow-lg text-center">
+        <h3 class="text-2xl mb-2">Gold Galleon</h3>
+        <p>Full Service + Emergency Visit – $179/month</p>
+        <button class="mt-4 bg-[#8b5a2b] text-[#f7e0a3] py-2 px-4 rounded">Sign Up</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="py-16 px-4 max-w-4xl mx-auto opacity-0 translate-y-10 transition-all duration-700 ease-out">
+    <h2 class="text-4xl text-center border-b-2 border-dashed border-[#8b5a2b] pb-4 mb-12">Before & After Battles</h2>
+    <div class="flex flex-wrap gap-8 justify-center">
+      <div class="gallery-card w-72 bg-[#fff8dc] border-4 border-dashed border-[#8b5a2b] rounded-xl p-6 shadow-lg text-center">
+        <img src="https://via.placeholder.com/280x180?text=Before" alt="Before: Cloudy pool with algae" class="w-full rounded-lg mb-2 cursor-pointer" onclick="openLightbox(this.src, this.alt)">
+        <p>The Kraken’s Curse</p>
+      </div>
+      <div class="gallery-card w-72 bg-[#fff8dc] border-4 border-dashed border-[#8b5a2b] rounded-xl p-6 shadow-lg text-center">
+        <img src="https://via.placeholder.com/280x180?text=After" alt="After: Crystal clear pool" class="w-full rounded-lg mb-2 cursor-pointer" onclick="openLightbox(this.src, this.alt)">
+        <p>Crystal Waters Restored</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-16 px-4 max-w-3xl mx-auto opacity-0 translate-y-10 transition-all duration-700 ease-out">
+    <h2 class="text-4xl text-center border-b-2 border-dashed border-[#8b5a2b] pb-4 mb-8">What the Crew’s Sayin’</h2>
+    <div class="testimonial-slider">
+      <div class="testimonial active bg-[#fff8dc] border-4 border-[#8b5a2b] rounded-xl p-8 shadow-lg text-center">
+        <p class="mb-4">“Shinier than a doubloon! Best in Tucson!”</p>
+        <p class="font-bold">– Captain Rick</p>
+      </div>
+      <div class="testimonial bg-[#fff8dc] border-4 border-[#8b5a2b] rounded-xl p-8 shadow-lg text-center">
+        <p class="mb-4">“Rescued my swampy pool. Pure magic!”</p>
+        <p class="font-bold">– Mary the Mariner</p>
+      </div>
+      <div class="testimonial bg-[#fff8dc] border-4 border-[#8b5a2b] rounded-xl p-8 shadow-lg text-center">
+        <p class="mb-4">“Piratey and prompt. Love the crew!”</p>
+        <p class="font-bold">– Peg-Leg Joe</p>
+      </div>
+    </div>
+    <div class="dots">
+      <span class="dot active" onclick="showTestimonial(0)"></span>
+      <span class="dot" onclick="showTestimonial(1)"></span>
+      <span class="dot" onclick="showTestimonial(2)"></span>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 px-4 max-w-xl mx-auto opacity-0 translate-y-10 transition-all duration-700 ease-out">
+    <h2 class="text-4xl text-center border-b-2 border-dashed border-[#8b5a2b] pb-4 mb-8">Summon the Crew!</h2>
+    <form class="bg-[#fff8dc] border-4 border-[#8b5a2b] rounded-xl p-8 shadow-lg space-y-4" onsubmit="handleContact(event)">
+      <div>
+        <label for="name" class="block font-bold">Name</label>
+        <input id="name" type="text" required class="w-full mt-1 p-2 border rounded" aria-label="Your name">
+      </div>
+      <div>
+        <label for="email" class="block font-bold">Email</label>
+        <input id="email" type="email" required class="w-full mt-1 p-2 border rounded" aria-label="Your email">
+      </div>
+      <div>
+        <label for="service" class="block font-bold">Service Needed</label>
+        <select id="service" class="w-full mt-1 p-2 border rounded" aria-label="Select a service">
+          <option value="">Select a Service</option>
+          <option>Swab the Deck</option>
+          <option>Slay the Kraken</option>
+          <option>Pirate’s Subscription</option>
+        </select>
+      </div>
+      <div>
+        <label for="message" class="block font-bold">Message</label>
+        <textarea id="message" rows="4" required class="w-full mt-1 p-2 border rounded" aria-label="Your message"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-[#8b5a2b] text-[#f7e0a3] py-3 rounded text-xl hover:bg-[#2e1c0f]">Send a Bottle</button>
+    </form>
+  </section>
+
+  <!-- Login Section (Mock) -->
+  <section id="login" class="py-16 px-4 max-w-xl mx-auto opacity-0 translate-y-10 transition-all duration-700 ease-out">
+    <h2 class="text-4xl text-center border-b-2 border-dashed border-[#8b5a2b] pb-4 mb-8">Join the Pirate Crew</h2>
+    <div class="bg-[#fff8dc] border-4 border-[#8b5a2b] rounded-xl p-8 shadow-lg text-center">
+      <p class="mb-4">Log in to manage bookings & claim loyalty treasure!</p>
+      <p class="text-lg">Your Doubloons: <span class="font-bold">100</span> (Mock)</p>
+      <button class="mt-4 bg-[#8b5a2b] text-[#f7e0a3] py-2 px-4 rounded">Mock Login</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center bg-[#3e2f21] text-[#f7e0a3] py-6">
+    <p>© 2025 Pirate Pool Services | Tucson, AZ | Call: 555-POOL-ME | Email: <a href="mailto:piratepools@example.com">piratepools@example.com</a></p>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="backToTop" class="fixed bottom-5 right-5 w-12 h-12 bg-[#8b5a2b] rounded-full text-[#f7e0a3] flex items-center justify-center hover:bg-[#2e1c0f]" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+      <path d="M12 5l-7 7h5v7h4v-7h5l-7-7z"/>
+    </svg>
+  </button>
+
+  <!-- Scripts -->
+  <script>
+    // Reveal on scroll
+    const sections = document.querySelectorAll('section');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('opacity-100', 'translate-y-0');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(s => obs.observe(s));
+
+    // Testimonial slider
+    let idx = 0;
+    const slides = document.querySelectorAll('.testimonial');
+    const dots = document.querySelectorAll('.dot');
+    function showTestimonial(n) {
+      slides[idx].classList.remove('active');
+      dots[idx].classList.remove('active');
+      idx = n;
+      slides[idx].classList.add('active');
+      dots[idx].classList.add('active');
+    }
+    setInterval(() => {
+      showTestimonial((idx + 1) % slides.length);
+    }, 5000);
+
+    // Treasure hunt
+    function revealTreasure() {
+      document.getElementById('treasure').style.display = 'block';
+    }
+
+    // Contact form
+    function handleContact(event) {
+      event.preventDefault();
+      alert('Message sent to the crew! We’ll swab your pool soon!');
+      event.target.reset();
+    }
+
+    // Gallery lightbox (mock)
+    function openLightbox(src, alt) {
+      alert(`Viewing: ${alt} (Mock lightbox for ${src})`);
+    }
+  </script>
+</body>
+</html>
